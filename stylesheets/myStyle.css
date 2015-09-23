@@ -1,0 +1,243 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+    background: #fff;
+    font-family: "STHeiti","Microsoft YaHei",'微软雅黑',"monotype corsive";
+    color: #666;
+    font-size: 13px;
+}
+
+body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, th, td, p, blockquote, pre, form, fieldset, legend, input, button, textarea, hr {
+    margin: 0;
+    padding: 0;
+}
+
+::selection {
+    background: #000;
+    color: #fff;
+}
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.fs51{font-size: 51px}
+.fs30{font-size: 30px}
+.fs24{font-size: 24px}
+.fs18{font-size: 18px}
+.fs12{font-size: 12px}
+
+.clearfix {
+    display: block;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+address, caption, cite, code, dfn, em, i, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+.city_bg {
+    background-image: url(../images/index/bg_1.jpg);
+    height: 760px;
+    background-repeat: no-repeat;
+    background-position: center 0;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.intro {
+    padding-top: 10%;
+}
+
+.intro .city_list {
+    width: auto;
+    border: none;
+    position: relative;
+    right: 5%;
+}
+
+.city_list .top_slogan {
+    color: #fff;
+    margin-left: 10%;
+    font-size: 20px;
+    margin: 0 20px 35px 0;
+    text-align: right;
+    letter-spacing: 3px;
+}
+
+.city_list .brand {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.city_list .top_slogan {
+    color: #fff;
+    margin-left: 10%;
+    font-size: 20px;
+    margin: 0 20px 35px 0;
+    text-align: right;
+    letter-spacing: 3px;
+}
+
+.intro .single_wrap {
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.intro .single {
+    float: right;
+    overflow: hidden;
+    zoom: 1;
+    width: 100%;
+    _position: relative;
+}
+
+.intro .single ul {
+    height: auto;
+    _position: relative;
+}
+
+.intro .city_list li {
+    float: right;
+}
+
+
+.city_list li {
+    float: left;
+    _display: inline;
+    _position: relative;
+    margin: 0 20px 20px 0;
+    background: url(../images/index/index_city.png);
+    _background-image: url(../images/index/index_city.gif);
+    width: 113px;
+    height: 113px;
+    border-radius: 56px;
+    overflow: hidden;
+    _zoom: 1;
+}
+
+.city_list li a {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    vertical-align: middle;
+    width: 113px;
+    height: 113px;
+    text-align: center;
+    overflow: hidden;
+    -webkit-transition: color .5s ease .15s;
+    color: #000;
+    zoom: 1;
+}
+
+.city_list li a .city_name {
+    position: relative;
+    display: block;
+    z-index: 100;
+    margin-top: 31px;
+}
+
+.city_list li a span em {
+    display: block;
+    height: 34px;
+}
+
+.city_list li a .city_name .fs12 {
+    margin-top: 5px;
+}
+
+.city_list li a .bg {
+    position: absolute;
+    top: 113px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: top .1s ease-out .15s;
+    background: url(../images/index/index_city.png) -261px 0;
+}
+
+/*城市列表公用样式*/
+.city_list .top_slogan{
+    color: #fff;
+    margin-left:10%;
+    font-size: 20px;
+    margin:0 20px 35px 0;
+    text-align: right;
+    letter-spacing: 3px;
+}
+.city_list .brand{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 30px;
+}
+.city_list li{
+    float: left;
+    _display: inline;
+    _position: relative;
+    margin:0 20px 20px 0;
+    background: url(../images/index/index_city.png);
+    width:113px;
+    height:113px;
+    border-radius: 56px;
+    overflow: hidden;
+    _zoom:1;}
+.city_list li.hot{
+    background: url(../images/index/index_city.png) -132px 0;
+}
+.city_list li.hot a{color: #fff}
+.city_list li a{
+    position: relative;
+    top:0;left:0;
+    display:block;
+    vertical-align: middle;
+    width:113px;
+    height:113px;
+    text-align: center;
+    overflow: hidden;
+    -webkit-transition:color .5s ease .15s;
+    color: #000;
+    zoom:1;
+}
+.city_list li a .city_name{
+    position: relative;
+    display: block;
+    z-index: 100;
+    margin-top:31px;
+}
+.city_list li a .city_name .fs12{margin-top: 5px;}
+.city_list li a .bg{
+    position: absolute;
+    top:113px;
+    left: 0;
+    width:100%;
+    height:100%;
+    -webkit-transition:top .1s ease-out .15s;
+    background: url(../images/index/index_city.png) -261px 0;
+}
+.city_list li a:hover {
+    color:#fff;
+    -webkit-transition:all .2s ease-out .15s;
+    text-shadow:0 0 5px #fff;_color:#000;
+}
+.city_list li a:hover .bg{top:0;}
+.city_list li a span em{display: block;height: 34px}
