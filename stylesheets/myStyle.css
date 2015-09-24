@@ -27,12 +27,8 @@ html {
     box-sizing: border-box;
 }
 
-.fs51{font-size: 51px}
-.fs30{font-size: 30px}
-.fs24{font-size: 24px}
-.fs18{font-size: 18px}
-.fs12{font-size: 12px}
-
+.fs-zh{font-size: 30px}
+.fs-en{font-size: 12px; margin-top: 8px;}
 .clearfix {
     display: block;
 }
@@ -48,8 +44,8 @@ address, caption, cite, code, dfn, em, i, th, var {
 }
 
 .city_bg {
-    background-image: url(../images/index/bg_1.jpg);
-    height: 760px;
+    background: url(../images/index/indexbackground.jpg);
+    /*height: 760px;*/
     background-repeat: no-repeat;
     background-position: center 0;
     background-size: cover;
@@ -62,15 +58,18 @@ address, caption, cite, code, dfn, em, i, th, var {
     z-index: -1;
 }
 
+
 .intro {
-    padding-top: 10%;
+    padding-top: 3%;
 }
 
 .intro .city_list {
     width: auto;
     border: none;
     position: relative;
-    right: 5%;
+    /*right: 5%;*/
+    right: 10%;
+    margin-top: 5%;
 }
 
 .city_list .top_slogan {
@@ -98,7 +97,7 @@ address, caption, cite, code, dfn, em, i, th, var {
 }
 
 .intro .single_wrap {
-    height: 400px;
+    /*height: 400px;*/
     overflow: hidden;
     position: relative;
 }
@@ -127,7 +126,6 @@ address, caption, cite, code, dfn, em, i, th, var {
     _position: relative;
     margin: 0 20px 20px 0;
     background: url(../images/index/index_city.png);
-    _background-image: url(../images/index/index_city.gif);
     width: 113px;
     height: 113px;
     border-radius: 56px;
@@ -149,7 +147,6 @@ address, caption, cite, code, dfn, em, i, th, var {
     color: #000;
     zoom: 1;
 }
-
 .city_list li a .city_name {
     position: relative;
     display: block;
@@ -190,50 +187,14 @@ address, caption, cite, code, dfn, em, i, th, var {
     vertical-align: middle;
     line-height: 30px;
 }
-.city_list li{
-    float: left;
-    _display: inline;
-    _position: relative;
-    margin:0 20px 20px 0;
-    background: url(../images/index/index_city.png);
-    width:113px;
-    height:113px;
-    border-radius: 56px;
-    overflow: hidden;
-    _zoom:1;}
+
 .city_list li.hot{
     background: url(../images/index/index_city.png) -132px 0;
 }
 .city_list li.hot a{color: #fff}
-.city_list li a{
-    position: relative;
-    top:0;left:0;
-    display:block;
-    vertical-align: middle;
-    width:113px;
-    height:113px;
-    text-align: center;
-    overflow: hidden;
-    -webkit-transition:color .5s ease .15s;
-    color: #000;
-    zoom:1;
-}
-.city_list li a .city_name{
-    position: relative;
-    display: block;
-    z-index: 100;
-    margin-top:31px;
-}
+
+
 .city_list li a .city_name .fs12{margin-top: 5px;}
-.city_list li a .bg{
-    position: absolute;
-    top:113px;
-    left: 0;
-    width:100%;
-    height:100%;
-    -webkit-transition:top .1s ease-out .15s;
-    background: url(../images/index/index_city.png) -261px 0;
-}
 .city_list li a:hover {
     color:#fff;
     -webkit-transition:all .2s ease-out .15s;
@@ -241,3 +202,88 @@ address, caption, cite, code, dfn, em, i, th, var {
 }
 .city_list li a:hover .bg{top:0;}
 .city_list li a span em{display: block;height: 34px}
+
+.page-header {
+    padding-bottom: 9px;
+    margin: 20px 0 20px;
+    border-bottom: 0px solid #eee;
+}
+
+@media screen and (max-width: 42em) {
+    .project-name {
+        font-size: 4.5rem;
+        font-weight: bold;
+    }
+
+    .city_list li {
+        float: left;
+        _display: inline;
+        _position: relative;
+        margin: 0 20px 20px 5px;
+        background: url(../images/index/index_city.png) -12px 0;
+        width: 83px;
+        height: 83px;
+        border-radius: 41px;
+        overflow: hidden;
+        _zoom: 1;
+    }
+
+    .city_list li a {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+        vertical-align: middle;
+        width: 83px;
+        height: 83px;
+        text-align: center;
+        overflow: hidden;
+        -webkit-transition: color .5s ease .15s;
+        color: #000;
+        zoom: 1;
+    }
+
+    .city_list li a .city_name {
+        position: relative;
+        display: block;
+        z-index: 100;
+        margin-top: 18px;
+    }
+
+    .city_list li a span em {
+        display: block;
+        height: 34px;
+    }
+
+    .city_list li a .city_name .fs12 {
+        margin-top: 5px;
+    }
+
+    .city_list li a .bg {
+        position: absolute;
+        top: 113px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: top .1s ease-out .15s;
+        background: url(../images/index/index_city.png) -281px -10px;
+    }
+
+    .fs-zh{font-size: 26px}
+    .fs-en{font-size: 12px;margin-top: 2px;}
+
+    .city_bg {
+        background: url(../images/index/coffee.jpg);
+        /*height: 760px;*/
+        background-repeat: no-repeat;
+        background-position: center 0;
+        background-size: 100% 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: -1;
+    }
+}
