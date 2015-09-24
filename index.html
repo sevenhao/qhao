@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
     <meta charset="UTF-8">
-    <title>七点的驿站.GitHub.io by sevenhao</title>
+    <title>七点的驿站</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
@@ -11,13 +11,35 @@
     <script src="js/jquery-2.1.3.min.js"></script>
     <script src="js/Lilac.js"></script>
     <script type="text/javascript">
-        require.config({
+		var browser={
+			versions:function(){ 
+				   var u = navigator.userAgent, app = navigator.appVersion; 
+				   return {//移动终端浏览器版本信息 
+						trident: u.indexOf('Trident') > -1, //IE内核
+						presto: u.indexOf('Presto') > -1, //opera内核
+						webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+						gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+						mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+						ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+						android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+						iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
+						iPad: u.indexOf('iPad') > -1, //是否iPad  
+						webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+					};
+				 }(),
+				 language:(navigator.browserLanguage || navigator.language).toLowerCase()
+		} 
+	
+	  if(!(browser.versions.mobile || browser.versions.ios || browser.versions.android || 
+		browser.versions.iPhone || browser.versions.iPad)){  	
+			require.config({
             baseUrl : 'http://static.zanbai.com/fe/src/',
             paths   : {
                 // 'jquery' : '../dep/jquery/1.8.2/jquery.min'
                 'jquery' : 'http://libs.baidu.com/jquery/1.8.2/jquery.min'
             }
-        });
+        });	
+	  }     
     </script>
 </head>
 <body>
@@ -25,8 +47,8 @@
       <div class="city_bg img-responsive" id="city-bg"></div>
       <div class="intro">
           <section class="page-header">
-              <div class="project-name">七点的驿站</div>
-              <div class="project-tagline">倾注满腔的热情，追求技术的卓越</div>
+              <div class="project-name">七点的沐兮</div>
+              <div class="project-tagline"><strong>前端攻城使</strong>——倾注满腔的热情，追求技术的卓越</div>
               <!--<a href="https://github.com/sevenhao/qhao" class="btn">View on GitHub</a>-->
               <!--<a href="https://github.com/sevenhao/qhao/zipball/master" class="btn">Download .zip</a>-->
               <!--<a href="https://github.com/sevenhao/qhao/tarball/master" class="btn">Download .tar.gz</a>-->
@@ -37,7 +59,7 @@
                   <div class="single">
                       <ul class="clearfix">
                           <li>
-                              <a title="郝琼的简历" action-type="change-bg" action-data="img=images/index/index-bg-phone.jpg" href="">
+                              <a title="简历" action-type="change-bg" action-data="img=images/index/index-bg-phone.jpg" href="">
 									<span class="city_name">
 										<em class="fs-zh">简历</em>
 										<em class="fs-en">CV</em>
@@ -46,7 +68,7 @@
                               </a>
                           </li>
                           <li>
-                              <a title="郝琼的介绍" action-type="change-bg" action-data="img=images/index/indexbackground.jpg" href="">
+                              <a title="七点的介绍" action-type="change-bg" action-data="img=images/index/indexbackground.jpg" href="">
 									<span class="city_name">
                                         <em class="fs-zh">七点</em>
 										<em class="fs-en">me</em>
@@ -59,16 +81,16 @@
                   <div class="single">
                       <ul class="clearfix">
                           <li>
-                              <a title="米兰-Milano购物指南" action-type="change-bg" action-data="img=images/index/bg_1.jpg" href="">
+                              <a title="七点的音乐" action-type="change-bg" action-data="img=images/index/bg_1.jpg" href="">
 									<span class="city_name">
-										<em class="fs-zh">社交</em>
-										<em class="fs-en">Social</em>
+										<em class="fs-zh">音乐</em>
+										<em class="fs-en">music</em>
 									</span>
                                   <span class="bg"></span>
                               </a>
                           </li>
                           <li>
-                              <a title="巴黎-Paris购物指南" action-type="change-bg" action-data="img=images/index/index-laptop.jpg" href="">
+                              <a title="七点的Github" action-type="change-bg" action-data="img=images/index/index-laptop.jpg" href="https://github.com/sevenhao">
 									<span class="city_name">
 										<em class="fs-zh">代码</em>
 										<em class="fs-en">code</em>
@@ -77,16 +99,16 @@
                               </a>
                           </li>
                           <li>
-                              <a title="迈阿密-Miami购物指南" action-type="change-bg" action-data="img=images/index/food-healthy-man-person.jpeg" href="">
+                              <a title="七点的文字" action-type="change-bg" action-data="img=images/index/food-healthy-man-person.jpeg" href="">
 									<span class="city_name">
-										<em class="fs-zh">文艺巷</em>
-										<em class="fs-en">Art</em>
+										<em class="fs-zh">随笔</em>
+										<em class="fs-en">gossip</em>
 									</span>
                                   <span class="bg"></span>
                               </a>
                           </li>
                           <li>
-                              <a title="香港-Hong Kong购物指南" action-type="change-bg" action-data="img=images/index/camera1.JPG" href="">
+                              <a title="七点的技术博客" action-type="change-bg" action-data="img=images/index/camera1.JPG" href="">
 									<span class="city_name">
 										<em class="fs-zh">博客</em>
 										<em class="fs-en">blog</em>
