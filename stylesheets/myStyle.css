@@ -44,7 +44,8 @@ address, caption, cite, code, dfn, em, i, th, var {
 }
 
 .city_bg {
-    background: url(../images/index/indexbackground.jpg);
+    background: url(../images/index/chenxi.jpg);
+    /*opacity: 0.6;*/
     /*height: 760px;*/
     background-repeat: no-repeat;
     background-position: center 0;
