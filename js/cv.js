@@ -54,127 +54,7 @@ countUp: {
 };
 skel.init(_options.skel),
 jQuery(function() {
-    function f() {
-        var a = $("#enter-fullscreen"),
-            b = window.screen.availWidth - $(window).width(),
-            c = window.screen.availHeight - $(window).height();
-        a.length > 0 && ("mac" == skel.vars.deviceType && a.find("span").remove(), b > 200 || c > 180 ? a.removeClass("hidden") : a.addClass("hidden"))
-    }
-    function j(a) {
-        var b = "left" === a ? "-=1px": "+=1px";
-        $("#lectures-inner").animate({
-                scrollLeft: b
-            },
-            1,
-            function() {
-                i && j(a)
-            })
-    }
-    function k() {
-        var c, a = $("body").find("section:not(.inactive)");
-        a.length && (c = parseInt(a.offset().top - $(document).scrollTop()), (c > 1 && 200 > c || 1 > c && c > -200) && b.animate({
-                scrollTop: a.offset().top + 1
-            },
-            500))
-    }
-    function l() {
-        document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement ? (document.exitFullscreen ? document.exitFullscreen() : document.msExitFullscreen ? document.msExitFullscreen() : document.mozCancelFullScreen ? document.mozCancelFullScreen() : document.webkitExitFullscreen && document.webkitExitFullscreen(), $("#btn-fullscreen").find("i").addClass("fa-expand").removeClass("fa-compress")) : (document.documentElement.requestFullscreen ? document.documentElement.requestFullscreen() : document.documentElement.msRequestFullscreen ? document.documentElement.msRequestFullscreen() : document.documentElement.mozRequestFullScreen ? document.documentElement.mozRequestFullScreen() : document.documentElement.webkitRequestFullscreen && document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT), $("#btn-fullscreen").find("i").addClass("fa-compress").removeClass("fa-expand"))
-    }
-    function m() {
-        var a = "jpg";
-        1 == $.cookie("webp-supported") && (a = "webp"),
-            $.getJSON("http://api.camarts.cn/photos/essentials.php?count=" + request_count + "&rate=5&tags=all&locations=china&format=json&suffix=" + a + "&jsoncallback=?",
-                function(a) {
-                    $("#montage").addClass("ready").empty(),
-                        $.each(a.items,
-                            function(a, b) {
-                                var c = b.id,
-                                    d = $("<a/>").attr({
-                                        href: "http://camarts.cn/?p=" + c,
-                                        target: "_blank",
-                                        rel: "external",
-                                        "data-location": b.location,
-                                        "data-camarts-id": b.id,
-                                        "data-camarts-title": b.title
-                                    });
-                                $("<img/>").attr("src", b.url).appendTo("#montage").wrap(d)
-                            }),
-                        console.log("Montage Loaded.")
-                })
-    }
-    function n() {
-        var a, b, c, d, e;
-        NProgress.start(),
-            a = $("#montage a").length,
-            b = "jpg",
-            1 == $.cookie("webp-supported") && (b = "webp"),
-            c = 0,
-            d = $("#montage-controller .reload").data("default"),
-            e = $("#montage-controller .reload").data("active"),
-            $("#montage-controller .reload").html('<i class="fa fa-refresh fa-spin circled"></i> ' + e).removeClass("ready").addClass("loading"),
-            $("#montage").removeClass("ready").addClass("reloading"),
-            $("#montage a").children("img").each(function(e) {
-                var f = $(this);
-                setTimeout(function() {
-                        f.addClass("flipping"),
-                            c++,
-                            c == a && $.getJSON("http://api.camarts.cn/photos/essentials.php?count=" + request_count + "&rate=5&tags=all&locations=china&format=json&suffix=" + b + "&jsoncallback=?",
-                            function(a) {
-                                NProgress.set(.618),
-                                    setTimeout(function() {
-                                            $("#montage").empty(),
-                                                $.each(a.items,
-                                                    function(a, b) {
-                                                        var c = $("<a/>").attr({
-                                                            href: "http://camarts.cn/?p=" + b.id,
-                                                            target: "_blank",
-                                                            rel: "external",
-                                                            "data-location": b.location,
-                                                            "data-camarts-id": b.id,
-                                                            "data-camarts-title": b.title
-                                                        });
-                                                        $("<img/>").attr("src", b.url).addClass("flipping").appendTo("#montage").wrap(c)
-                                                    }),
-                                                $("#montage").waitForImages(function() {
-                                                    NProgress.done(),
-                                                        console.log("Montage Reloaded."),
-                                                        $("#montage a").children("img").each(function(a) {
-                                                            var b = $(this);
-                                                            setTimeout(function() {
-                                                                    b.removeClass("flipping")
-                                                                },
-                                                                    100 * a)
-                                                        }),
-                                                        $("#montage-controller .reload").html('<i class="fa fa-refresh circled"></i> ' + d).removeClass("loading").addClass("ready"),
-                                                        $("#montage").removeClass("reloading").addClass("ready")
-                                                })
-                                        },
-                                        300)
-                            })
-                    },
-                        100 * e)
-            })
-    }
-    function o() {
-        $("#showcase img").each(function() {
-            var a = $(this),
-                b = a.offset(),
-                c = a.outerWidth(),
-                d = a.outerHeight(),
-                e = a.next("figcaption").outerHeight(),
-                f = $(document).scrollTop(),
-                g = a.next("figcaption").data("placement");
-            "top" == g ? a.next("figcaption").css({
-                width: c + "px",
-                top: b.top - f - e + "px",
-                left: b.left + "px"
-            }) : a.next("figcaption").css({
-                width: c + "px",
-                top: b.top - f + d + "px",
-                left: b.left + "px"
-            })
-        })
-    }
+
     var e, h, i, a = $(window),
         b = window.opera ? "CSS1Compat" == document.compatMode ? $("html") : $("body") : $("html, body"),
         c = $("body").children("section"),
@@ -356,9 +236,6 @@ jQuery(function() {
                 a.trigger("resize").trigger("scroll")
         }),
         request_count = $("#montage").data("count"),
-        m(),
-        o(),
-        f(),
         $("html").addClass(skel.vars.deviceType),
         function() {
             var a = new Image;
@@ -382,17 +259,10 @@ jQuery(function() {
         $(window).scroll(function() {
             var a = $(document).scrollTop();
             a > 50 ? $("#intro").addClass("scrolling-out") : $("#intro").removeClass("scrolling-out"),
-                o(),
-                e && clearTimeout(e),
-                e = setTimeout(function() {
-                        k()
-                    },
-                    3e3)
+                e && clearTimeout(e)
         }),
         $(window).resize(function() {
-            $("map").resize(),
-                o(),
-                f()
+            $("map").resize()
         }),
         $.getScript("http://v5.res.dandyweng.com/scripts/maps." + d + ".js",
             function() {
