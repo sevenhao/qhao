@@ -3,7 +3,7 @@
  * Copyright (c) 2009 qhao
  */
 @charset "utf-8";
-/*@import url("http://cdn.dandyweng.com/fa/font-awesome.min.css");*/
+@import url("http://cdn.dandyweng.com/fa/font-awesome.min.css");
 /*@import url('../font-awesome.min.css');*/
 
 html,body,div,span,applet,object,iframe,h1,
@@ -34,7 +34,8 @@ body{-webkit-text-size-adjust:none}
 
 html,body,input,textarea,button {
     font-size: 62.5%;
-    font-family: "merriweather",SimSun,"宋体",serif;
+    /*font-family: "merriweather",SimSun,"宋体",serif;*/
+    font-family: Lato,"Microsoft YaHei",sans-serif;
     font-weight: normal;
     -webkit-font-smoothing: antialiased
 }
@@ -211,12 +212,12 @@ header {
 
 header p {
     display: block;
-    margin: 1rem 0 0 0;
-    padding: 0 0 .5rem 0
+    margin: 0;
+    padding: 0;
 }
 
 #intro {
-    background: url("http://v5.res.dandyweng.com/images/backgrounds/intro.jpg");
+    background: url(../../images/cv/photo4.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-position: bottom center;
@@ -228,7 +229,7 @@ header p {
 
 #portait {
     margin: auto;
-    margin-top: -180px;
+    margin-top: -120px;
     width: 150px;
     height: 150px;
     border-radius: 100%;
@@ -299,19 +300,21 @@ header p {
 
 #intro header h2 {
     position: relative !important;
-    font-size: 28px;
-    font-size: 2.8rem;
+    font-family: Lato,"Microsoft YaHei",sans-serif;
+    margin: 0.5em 0 1em 0;
+    font-size: 4.5rem;
+    font-weight: 500;
     line-height: 0;
-    letter-spacing: 0;
+    letter-spacing:4px;
     margin-top: 50px
 }
 
 #intro header p {
     position: relative !important;
-    font-size: 20px;
-    font-size: 2rem;
+    font-size: 16px;
+    font-size: 1.8rem;
     line-height: 1.6;
-    margin-top: 1.2em
+    /*margin-top: 1.2em*/
 }
 
 #intro .content {
@@ -2215,7 +2218,7 @@ body>section.inactive>*:not(.no-fading) {
     }
 
     #portait {
-        margin-top: -180px
+        margin-top: -120px
     }
 
     #intro .content {
