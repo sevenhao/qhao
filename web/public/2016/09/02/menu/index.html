@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS知识总结 | 七点的沐兮</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="从事前端工作已经两年了，这两年接触了不少技术。作为一个非科班出生的前端，在这条路上走无疑是需要在自学的过程中不断的总结和积累的。
+最近看了@张鑫旭的前端微博，他专注前端，对前端知识的总结也比较全面。对于知识体系庞大的前端，在他的微博偶尔翻看并不能完全掌握，俗话说：“好记性不如烂笔头”。现在虽然笔头用得少了，但是我还是决定自己把看过的前端知识总结一下，以便加深理解。而且在有些常用的知识点上配上自己的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS知识总结">
+<meta property="og:url" content="https://github.com/sevenhao/2016/09/02/menu/index.html">
+<meta property="og:site_name" content="七点的沐兮">
+<meta property="og:description" content="从事前端工作已经两年了，这两年接触了不少技术。作为一个非科班出生的前端，在这条路上走无疑是需要在自学的过程中不断的总结和积累的。
+最近看了@张鑫旭的前端微博，他专注前端，对前端知识的总结也比较全面。对于知识体系庞大的前端，在他的微博偶尔翻看并不能完全掌握，俗话说：“好记性不如烂笔头”。现在虽然笔头用得少了，但是我还是决定自己把看过的前端知识总结一下，以便加深理解。而且在有些常用的知识点上配上自己的">
+<meta property="og:updated_time" content="2016-09-03T08:46:43.433Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS知识总结">
+<meta name="twitter:description" content="从事前端工作已经两年了，这两年接触了不少技术。作为一个非科班出生的前端，在这条路上走无疑是需要在自学的过程中不断的总结和积累的。
+最近看了@张鑫旭的前端微博，他专注前端，对前端知识的总结也比较全面。对于知识体系庞大的前端，在他的微博偶尔翻看并不能完全掌握，俗话说：“好记性不如烂笔头”。现在虽然笔头用得少了，但是我还是决定自己把看过的前端知识总结一下，以便加深理解。而且在有些常用的知识点上配上自己的">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/qhao/web/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/qhao/web/" id="logo">七点的沐兮</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/qhao/web/" id="subtitle">下一个路口，直行</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/qhao/web/">Home</a>
+        
+          <a class="main-nav-link" href="/qhao/web/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/sevenhao"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-menu" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/qhao/web/2016/09/02/menu/" class="article-date">
+  <time datetime="2016-09-02T09:41:04.133Z" itemprop="datePublished">2016-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS知识总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从事前端工作已经两年了，这两年接触了不少技术。作为一个非科班出生的前端，在这条路上走无疑是需要在自学的过程中不断的总结和积累的。</p>
+<p>最近看了<a href="http://www.zhangxinxu.com/" target="_blank" rel="external">@张鑫旭</a>的前端微博，他专注前端，对前端知识的总结也比较全面。对于知识体系庞大的前端，在他的微博偶尔翻看并不能完全掌握，俗话说：“好记性不如烂笔头”。现在虽然笔头用得少了，但是我还是决定自己把看过的前端知识总结一下，以便加深理解。而且在有些常用的知识点上配上自己的demo,如果有幸得同行关注，或许对像我这些刚入选的菜鸟也可有些许帮助吧。</p>
+<p>更多良心分类清单，请参考：<a href="http://www.kancloud.cn/jikeytang/qq/87646" target="_blank" rel="external">JS前端开发群规 - 492107297</a>；其 Github 在线地址为 <a href="http://t.cn/RL2NtqX" target="_blank" rel="external">http://t.cn/RL2NtqX</a>。这个前端分享学习QQ群氛围大好，十分难得。非常感谢群主 <a href="http://www.cnblogs.com/jikey/" target="_blank" rel="external">@豪情</a> 提供这个交流平台。</p>
+<p>千里之行始于足下，打好基础才最重要。在运用实践过程中不断的总结和积累也非常重要。前端分类知识介绍将持续更新。(更新于2016-07-08)。</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>菜单</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W3C规范</td>
+<td><a href="http://amazeui.org/react" target="_blank" rel="external">http://amazeui.org/react</a></td>
+</tr>
+<tr>
+<td>W3C规范——中文翻译</td>
+<td><a href="http://touchstonejs.io" target="_blank" rel="external">http://touchstonejs.io</a></td>
+</tr>
+<tr>
+<td>MDNWeb 技术文档</td>
+<td><a href="http://www.react-china.org" target="_blank" rel="external">http://www.react-china.org</a></td>
+</tr>
+<tr>
+<td>w3school</td>
+<td><a href="https://facebook.github.io/react/index.html" target="_blank" rel="external">https://facebook.github.io/react/index.html</a></td>
+</tr>
+<tr>
+<td>CSS参考手册</td>
+<td><a href="https://facebook.github.io/react/docs/getting-started.html" target="_blank" rel="external">https://facebook.github.io/react/docs/getting-started.html</a></td>
+</tr>
+<tr>
+<td>CSS3.0在线手册</td>
+<td><a href="http://www.html-js.com/article/Fakefish%203053" target="_blank" rel="external">http://www.html-js.com/article/Fakefish%203053</a></td>
+</tr>
+<tr>
+<td>菜鸟教程</td>
+<td><a href="http://material-ui.com/#" target="_blank" rel="external">http://material-ui.com/#</a></td>
+</tr>
+<tr>
+<td>Html5 JavaScript AP</td>
+<td><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2015/03/react.html</a></td>
+</tr>
+<tr>
+<td>w3cplus</td>
+<td><a href="http://wiki.jikexueyuan.com/project/react-native" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/react-native</a></td>
+</tr>
+<tr>
+<td>Javascript秘密花园</td>
+<td><a href="https://fakefish.github.io/react-webpack-cookbook" target="_blank" rel="external">https://fakefish.github.io/react-webpack-cookbook</a></td>
+</tr>
+<tr>
+<td>ES6</td>
+<td><a href="https://fakefish.github.io/react-webpack-cookbook" target="_blank" rel="external">https://fakefish.github.io/react-webpack-cookbook</a></td>
+</tr>
+<tr>
+<td>jquery API 官网</td>
+<td><a href="https://fakefish.github.io/react-webpack-cookbook" target="_blank" rel="external">https://fakefish.github.io/react-webpack-cookbook</a></td>
+</tr>
+<tr>
+<td>jquery中文文档</td>
+<td><a href="https://github.com/webpack/webpack">https://github.com/webpack/webpack</a></td>
+</tr>
+<tr>
+<td>HTML特殊字符编码对照表</td>
+<td><a href="http://html-js.com/article/3009" target="_blank" rel="external">http://html-js.com/article/3009</a></td>
+</tr>
+<tr>
+<td>PHP手册</td>
+<td><a href="http://segmentfault.com/a/1190000003499526" target="_blank" rel="external">http://segmentfault.com/a/1190000003499526</a></td>
+</tr>
+<tr>
+<td>前端编码规范</td>
+<td><a href="http://www.piliyu.com" target="_blank" rel="external">http://www.piliyu.com</a></td>
+</tr>
+<tr>
+<td>在线校验格式化</td>
+<td><a href="http://html-js.com/article/3113" target="_blank" rel="external">http://html-js.com/article/3113</a></td>
+</tr>
+<tr>
+<td>CSS 开发者指南</td>
+<td><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS</a></td>
+</tr>
+<tr>
+<td>CSS3动画手册</td>
+<td><a href="http://material-ui.com/#" target="_blank" rel="external">http://material-ui.com/#</a></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/sevenhao/qhao/web/2016/09/02/menu/" data-id="cispt9ezt0000w4icokfe1ou6" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/qhao/web/2016/09/02/menu0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">前端知识总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/qhao/web/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/qhao/web/2016/09/02/menu/">CSS知识总结</a>
+          </li>
+        
+          <li>
+            <a href="/qhao/web/2016/09/02/menu0/">前端知识总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 qhao<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/qhao/web/" class="mobile-nav-link">Home</a>
+  
+    <a href="/qhao/web/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/qhao/web/fancybox/jquery.fancybox.css">
+  <script src="/qhao/web/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/qhao/web/js/script.js"></script>
+
+  </div>
+</body>
+</html>
