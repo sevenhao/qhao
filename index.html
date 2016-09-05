@@ -115,10 +115,9 @@
 	  if(!(browser.versions.mobile || browser.versions.ios || browser.versions.android || 
 		browser.versions.iPhone || browser.versions.iPad)){  	
 			require.config({
-                baseUrl : 'http://static.zanbai.com/fe/src/',
+                baseUrl : './js/',
                 paths   : {
-                    'jquery' : '../dep/jquery/1.8.2/jquery.min'
-    //                'jquery' : 'http://libs.baidu.com/jquery/1.8.2/jquery.min'
+                    'jquery' : './jquery-2.1.3.min'
                 }
         });
 	  }     
@@ -190,7 +189,8 @@
                               </a>
                           </li>
                           <li>
-                              <a title="七点的技术博客" action-type="change-bg" action-data="img=images/index/indexbackground.jpg" href="">
+                              <a title="七点的技术博客" action-type="change-bg" action-data="img=images/index/indexbackground.jpg"
+                                 href="./web/menu/sevenhaoMenu.html">
 									<span class="city_name">
 										<em class="fs-zh">博客</em>
 										<em class="fs-en">blog</em>
@@ -206,13 +206,11 @@
       </div>
   </div>
   <script type="text/javascript">
-//      $('.sevenhao-content').hide();
       $('.cover-login').show();
       setTimeout(function(){
           $('.cover-login').hide();
-//          $('.sevenhao-content').show();
       },3000)
-      require('home/main1');
+      require('main1');
   </script>
   <script src="js/bootstrap.min.js"></script>
   

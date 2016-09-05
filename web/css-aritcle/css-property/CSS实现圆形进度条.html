@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://paran.io/css-float-attribute/ -->
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS3实现圆形进度条</title>
+	<link rel="stylesheet" id="twentysixteen-style-css" href="./css/CSS浮动属性Float详解/style.css?ver=20160628" type="text/css" media="all">
+	<!--<link rel="stylesheet" href="./css/css实现圆形进度条/all.min.css">-->
+	<!--[if lt IE 10]>
+	<link rel='stylesheet' id='twentysixteen-ie-css'  href='./css/CSS浮动属性Float详解/ie.css?ver=20160628' type='text/css' media='all' />
+	<![endif]-->
+	<!--[if lt IE 9]>
+	<link rel='stylesheet' id='twentysixteen-ie8-css'  href='./css/CSS浮动属性Float详解/ie8.css?ver=20160628' type='text/css' media='all' />
+	<![endif]-->
+	<!--[if lt IE 8]>
+	<link rel='stylesheet' id='twentysixteen-ie7-css'  href='./css/CSS浮动属性Float详解/ie7.css?ver=20160628' type='text/css' media='all' />
+	<![endif]-->
+	<!--[if lt IE 9]>
+	<script type='text/javascript' src='./js/CSS浮动属性Float详解/html5.js?ver=3.7.3'></script>
+	<![endif]-->
+
+	<script src="../../../js/jquery-2.1.3.min.js"></script>
+	<script src="./js/css3环形进度条/circle.js"></script>
+	<style>
+		.inline-code{
+			padding: 3px 4px;
+			color: #c7254e;
+			background-color: #F9F9FD;
+			margin: 0 2px;
+			font-family: consolas,courier new;
+			font-size: 96%;
+		}
+	</style>
+</head>
+<body class="single single-post postid-11034 single-format-standard group-blog no-sidebar">
+<div id="page" class="site">
+	<div class="site-inner">
+		<div id="masthead" class="header site-header" role="banner">
+			<div class="site-header-main">
+				<div class="site-branding">
+					<p class="site-title">
+						<a href="http://sevenhao.github.io/qhao/">七点的沐兮</a>
+					</p>
+					<p class="site-description">The world is his who enjoys it.</p>
+				</div>
+				<!-- .site-branding -->
+			</div>
+			<!-- .site-header-main -->
+		</div>
+		<!-- .site-header -->
+
+		<div id="content" class="site-content">
+			<div id="primary" class="content-area">
+				<main id="main" class="site-main" role="main">
+					<article id="post-11034" class="post-11034 post type-post status-publish format-standard hentry category-css category-dede tag-css tag-css-attribute tag-float">
+						<div class="header entry-header">
+							<h1 class="entry-title">CSS3实现圆形进度条</h1>
+						</div><!-- .entry-header -->
+						<div class="entry-content">
+							<h2>前言</h2>
+							<p>最近在做hybrid app开发过程中用到了环形进度条，根据UI原型需求：<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;1、环形进度条表示进度百分比；<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;2、圆环进度颜色可实现渐变；<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;3、圆环要达到多屏幕自适应效果。
+							</p>
+							<p>
+								<img class="aligncenter" src="img/CSS3环形进度条/circle.jpg" alt="web-layout">
+							</p>
+							<p>环形进度条的实现，问一下度娘就可以发现一大堆的方案。</p>
+							<p>开始为了杆进度，直接采用了开源的jquery插件实现（该插件的实现方法及遇到的坑会在另一篇文章中介绍）。但是当开发任务完成后，就考虑到优化问题，然后就不想用插件，也不想用canvas来实现，毕竟在自适应方法也存在弊端（好吧，其实主要原因还是canvas技术我还不够熟悉啦）。</p>
+							<p>言归正转，下面讲解下如何使用CSS3实现圆形进度条。</p>
+							<h2>CSS3 实现进度100%</h2>
+							<p>CSS用<code class="inline-code">border</code>和<code class="inline-code">border-radius</code>可以画出圆环，但是这样的圆环不能动，而且能产生进度条效果需要圆环是从0开始到100%逐渐变化，很显然不是一个完整的圆环在旋转。</p>
+							<p>1、把整个圆环分成左右两部分；</p>
+							<p>2、左右两部分都有半个圆环在旋转，比如先让右边的半圆环，旋转到正好接住了左半部分，然后左边的半圆环开始旋转</p>
+							<h3>1. 画右半圆环</h3>
+							<p>首先实现右半圆，右半圆html结构：</p>
+
+							<pre><code class="hljs cs">&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"right"</span>&gt;
+								&nbsp;&nbsp;&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"rightcircle"</span>&gt;&lt;/div&gt;
+								&lt;/div&gt;</code></pre>
+
+							<p><code class="inline-code">rightcircle</code>是半个圆环,CSS样式如下：</p>
+
+							<pre><code class="hljs css"><span class="hljs-class">.right</span><span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">position</span>:<span class="hljs-value"> relative</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">200px</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">250px</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">overflow</span>:<span class="hljs-value"> hidden</span></span>;
+}</span>
+								<span class="hljs-class">.rightcircle</span><span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">200px</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">200px</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"><span class="hljs-number">8px</span> solid transparent</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">border-radius</span>:<span class="hljs-value"> <span class="hljs-number">50%</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">position</span>:<span class="hljs-value"> absolute</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">top</span>:<span class="hljs-value"><span class="hljs-number">0</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">right</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">border-top</span>:<span class="hljs-value"><span class="hljs-number">8px</span> solid #38B99B</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">border-right</span>:<span class="hljs-value"><span class="hljs-number">8px</span> solid #38B99B</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">-webkit-transform </span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(<span class="hljs-number">45deg</span>)</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">-moz-transform </span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(<span class="hljs-number">45deg</span>)</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">-o-transform </span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(<span class="hljs-number">45deg</span>)</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">transform </span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(<span class="hljs-number">45deg</span>)</span></span>; <span class="hljs-comment">/* 旋转45度 */</span>
+}</span></code>
+							</pre>
+
+							<p>右半圆环实现样式如下：</p>
+
+							<div class="right-demo right-demo0">
+								<div class="rightcircle"></div>
+							</div>
+
+							<p>其实本来是一个半圆弧，但由于我们设置了上边框和右边框，所以上边框有一半溢出而被隐藏了，所以我们可以通过旋转得以还原。</p>
+							<p>外层的div有一个<code class="inline-code">overflow:hidden</code>属性，我们先把这个半圆旋转到div的另一边隐藏了，然后再慢慢改变这个半圆环的角度，让它显示出来不就行了。稍微计算下就可以知道，-135deg正好能将右半圆隐藏在外层div的左半部分:</p>
+
+							<pre><code class="hljs css"><span class="hljs-class">.rightcircle</span><span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">200px</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">200px</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"><span class="hljs-number">8px</span> solid transparent</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">border-radius</span>:<span class="hljs-value"> <span class="hljs-number">50%</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">position</span>:<span class="hljs-value"> absolute</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">top</span>:<span class="hljs-value"><span class="hljs-number">0</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">right</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">border-top</span>:<span class="hljs-value"><span class="hljs-number">8px</span> solid #38B99B</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">border-right</span>:<span class="hljs-value"><span class="hljs-number">8px</span> solid #38B99B</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">transform </span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(-<span class="hljs-number">135deg</span>)</span></span>; <span class="hljs-comment">/* 旋转45度时正好能显示右半个圆，旋转-135度，正好能隐藏右半个圆 */</span>
+}</span></code></pre>
+
+							<div class="right-demo right-demo1">
+								<div class="rightcircle"></div>
+							</div>
+
+							<p><strong>这个<code class="inline-code">-135deg</code>是怎么得出来的呢?</strong><br>
+								我们来看下面的这张图：</p>
+
+							<p><img src="./img/css3环形进度条/transition_135.png" alt="transition"></p>
+
+							<p>矩形的上边界和右边界正好是对应这上图圆形的上半部分和右半部分，旋转到左侧正好隐藏的话，那就是逆时针旋转<code class="inline-code">-135deg</code></p>
+
+							<h3>2. 为半圆添加动画</h3>
+
+
+							<p>整个右半圆已经隐藏了，那么我们让它慢慢显示出来，就需要给<code class="inline-code">rightcircle</code>添加一个<code class="inline-code">animation</code>动画。
+							</p>
+
+							<pre><code class="hljs css"><span class="hljs-comment">/* 这里仅考虑webkit内核的情况，您可以写完整了 */</span>
+								<span class="hljs-class">.rightcircle</span><span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">-webkit-animation-name</span>:<span class="hljs-value"> circle_right</span></span>; <span class="hljs-comment">/* 动画名称 */</span>
+    <span class="hljs-rule"><span class="hljs-attribute">-webkit-animation-duration</span>:<span class="hljs-value"> <span class="hljs-number">5s</span></span></span>;  <span class="hljs-comment">/* 完成一个动画需要的时间 */</span>
+    <span class="hljs-rule"><span class="hljs-attribute">-webkit-animation-timing-function</span>:<span class="hljs-value"> linear</span></span>; <span class="hljs-comment">/* 动画播放的方式，linear是匀速变化 */</span>
+    <span class="hljs-rule"><span class="hljs-attribute">-webkit-animation-iteration-count</span>:<span class="hljs-value"> infinite</span></span>;  <span class="hljs-comment">/* 动画播放的次数，infinite是无限次数 */</span>
+}</span>
+
+<span class="hljs-at_rule">@<span class="hljs-keyword">-webkit-keyframes</span> circle_right</span>{
+    0%<span class="hljs-rules">{
+        <span class="hljs-rule"><span class="hljs-attribute">transform </span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(-<span class="hljs-number">135deg</span>)</span></span>;
+    }</span>
+	100%<span class="hljs-rules">{
+        <span class="hljs-rule"><span class="hljs-attribute">transform </span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(<span class="hljs-number">45deg</span>)</span></span>;
+    }</span>
+}</code></pre>
+
+							<div class="right-demo-a">
+								<div class="rightcircle"></div>
+							</div>
+
+							<h3>3. 左半圆动画</h3>
+
+							<p>左半部分就正好相反。</p>
+							<pre><code class="hljs cs">&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"left"</span>&gt;
+								&nbsp;&nbsp;&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"leftcircle"</span>&gt;&lt;/div&gt;
+								&lt;/div&gt;</code></pre>
+
+							<pre><code class="hljs css"><span class="hljs-comment">/* 这里仅考虑webkit内核的情况，您可以写完整了 */</span>
+								<span class="hljs-class">.leftcircle</span><span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">-webkit-animation-name</span>:<span class="hljs-value"> circle_left</span></span>; <span class="hljs-comment">/* 动画名称 */</span>
+    <span class="hljs-rule"><span class="hljs-attribute">-webkit-animation-duration</span>:<span class="hljs-value"> <span class="hljs-number">5s</span></span></span>;  <span class="hljs-comment">/* 完成一个动画需要的时间 */</span>
+    <span class="hljs-rule"><span class="hljs-attribute">-webkit-animation-timing-function</span>:<span class="hljs-value"> linear</span></span>; <span class="hljs-comment">/* 动画播放的方式，linear是匀速变化 */</span>
+    <span class="hljs-rule"><span class="hljs-attribute">-webkit-animation-iteration-count</span>:<span class="hljs-value"> infinite</span></span>;  <span class="hljs-comment">/* 动画播放的次数，infinite是无限次数 */</span>
+}</span>
+
+<span class="hljs-at_rule">@<span class="hljs-keyword">-webkit-keyframes</span> circle_left</span>{
+	0%<span class="hljs-rules">{
+        <span class="hljs-rule"><span class="hljs-attribute">transform </span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(-<span class="hljs-number">135deg</span>)</span></span>;
+    }</span>
+	100%<span class="hljs-rules">{
+        <span class="hljs-rule"><span class="hljs-attribute">transform </span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(<span class="hljs-number">45deg</span>)</span></span>;
+    }</span>
+}</code></pre>
+
+							<div class="wrapper left-demo">
+								<div class="leftcircle"></div>
+							</div>
+
+							<h3>4. 完整圆环进度条<</h3>
+							<p>html结构:</p>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"circle_process"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"wrapper right"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"circle rightcircle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"wrapper left"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"circle leftcircle"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"leftcircle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+
+							<p>CSS样式：</p>
+							<pre><code class="hljs xml"><span class="css"><span class="hljs-class">.circle_process</span><span class="hljs-rules">{
+	<span class="hljs-rule"><span class="hljs-attribute">position</span>:<span class="hljs-value"> relative</span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">199px</span></span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">height </span>:<span class="hljs-value"> <span class="hljs-number">200px</span></span></span>;
+}</span>
+<span class="hljs-class">.circle_process</span> <span class="hljs-class">.wrapper</span><span class="hljs-rules">{
+	<span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">100px</span></span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">200px</span></span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">position</span>:<span class="hljs-value"> absolute</span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">top</span>:<span class="hljs-value"><span class="hljs-number">0</span></span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">overflow</span>:<span class="hljs-value"> hidden</span></span>;
+}</span>
+<span class="hljs-class">.circle_process</span> <span class="hljs-class">.right</span><span class="hljs-rules">{
+	<span class="hljs-rule"><span class="hljs-attribute">right</span>:<span class="hljs-value"><span class="hljs-number">0</span></span></span>;
+}</span>
+<span class="hljs-class">.circle_process</span> <span class="hljs-class">.left</span><span class="hljs-rules">{
+	<span class="hljs-rule"><span class="hljs-attribute">left</span>:<span class="hljs-value"><span class="hljs-number">0</span></span></span>;
+}</span>
+<span class="hljs-class">.circle_process</span> <span class="hljs-class">.circle</span><span class="hljs-rules">{
+	<span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">160px</span></span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">160px</span></span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"><span class="hljs-number">20px</span> solid transparent</span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">border-radius</span>:<span class="hljs-value"> <span class="hljs-number">50%</span></span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">position</span>:<span class="hljs-value"> absolute</span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">top</span>:<span class="hljs-value"><span class="hljs-number">0</span></span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">transform </span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(-<span class="hljs-number">135deg</span>)</span></span>;
+}</span>
+<span class="hljs-class">.circle_process</span> <span class="hljs-class">.rightcircle</span><span class="hljs-rules">{
+	<span class="hljs-rule"><span class="hljs-attribute">border-top</span>:<span class="hljs-value"><span class="hljs-number">20px</span> solid green</span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">border-right</span>:<span class="hljs-value"><span class="hljs-number">20px</span> solid green</span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">right</span>:<span class="hljs-value"><span class="hljs-number">0</span></span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">-webkit-animation</span>:<span class="hljs-value"> circle_right <span class="hljs-number">5s</span> linear infinite</span></span>;
+}</span>
+<span class="hljs-class">.circle_process</span> <span class="hljs-class">.leftcircle</span><span class="hljs-rules">{
+	<span class="hljs-rule"><span class="hljs-attribute">border-bottom</span>:<span class="hljs-value"><span class="hljs-number">20px</span> solid green</span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">border-left</span>:<span class="hljs-value"><span class="hljs-number">20px</span> solid green</span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">left</span>:<span class="hljs-value"><span class="hljs-number">0</span></span></span>;
+	<span class="hljs-rule"><span class="hljs-attribute">-webkit-animation</span>:<span class="hljs-value"> circle_left <span class="hljs-number">5s</span> linear infinite</span></span>;
+}</span>
+<span class="hljs-at_rule">@<span class="hljs-keyword">-webkit-keyframes</span> circle_right</span>{
+	0%<span class="hljs-rules">{
+		<span class="hljs-rule"><span class="hljs-attribute">-webkit-transform</span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(-<span class="hljs-number">135deg</span>)</span></span>;
+	}</span>
+	50%,100%<span class="hljs-rules">{
+		<span class="hljs-rule"><span class="hljs-attribute">-webkit-transform</span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(<span class="hljs-number">45deg</span>)</span></span>;
+	}</span>
+}
+<span class="hljs-at_rule">@<span class="hljs-keyword">-webkit-keyframes</span> circle_left</span>{
+	0%,50%<span class="hljs-rules">{
+		<span class="hljs-rule"><span class="hljs-attribute">-webkit-transform</span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(-<span class="hljs-number">135deg</span>)</span></span>;
+	}</span>
+	100%<span class="hljs-rules">{
+		<span class="hljs-rule"><span class="hljs-attribute">-webkit-transform</span>:<span class="hljs-value"> <span class="hljs-function">rotate</span>(<span class="hljs-number">45deg</span>)</span></span>;
+	}</span>
+}
+</span></code></pre>
+
+							<p>完整圆环进度条:</p>
+							<div class="circle_process">
+								<div class="wrapper right">
+									<div class="circle rightcircle"></div>
+								</div>
+								<div class="wrapper left">
+									<div class="circle leftcircle"></div>
+								</div>
+							</div>
+
+
+							<h2>不同百分比圆形进度条</h2>
+							<p>用js根据百分比动态控制旋转角度，即可实现不同百分比的进度条，进而可实现简易小闹钟。</p>
+
+							<div class="percent">
+								<div class="wrapper right">
+									<div class="circle rightcircle" id="rightcircle" style="transform: rotate(-15deg);"></div>
+								</div>
+								<div class="wrapper left">
+									<div class="circle leftcircle" id="leftcircle" style="transform: rotate(-135deg);"></div>
+								</div>
+								<div id="percent-show">20</div>
+							</div>
+
+							<div style="margin: 20px 0;">
+								选择圆环百分比：
+								<select name="percent" id="selectID" value="75">
+									<option value="1">25</option>
+									<option value="2">50</option>
+									<option value="3" selected="selected">75</option>
+									<option value="4">90</option>
+									<option value="5">100</option>
+								</select>
+							</div>
+
+							<h2>简易小闹钟</h2>
+
+							<div class="time" style="margin: 20px 0;">
+								<div class="wrapper right">
+									<div class="circle rightcircle" id="timerightcircle" style="transform: rotate(-135deg);"></div>
+								</div>
+								<div class="wrapper left">
+									<div class="circle leftcircle" id="timeleftcircle" style="transform: rotate(-135deg);"></div>
+								</div>
+								<div id="timeshow">0</div>
+							</div>
+
+<br><br>
+							<hr>
+<p>另一种相似方法完成圆形进度环demo，该方法用到了rotateZ(angle)方法，Internet Explorer 和 Opera 不支持 rotateZ 方法。
+	<a href="CSS实现圆形进度条demo.html">demo</a><br>
+</p>
+</div><!-- .entry-content -->
+
+<div class="footer entry-footer">
+	<span class="byline">
+		<span class="author vcard">
+			<img alt="" src="http://sevenhao.github.io/qhao/images/cv/qhao.jpg" class="avatar avatar-49 photo" height="49" width="49">
+			<span class="screen-reader-text">作者 </span>
+			<a class="url fn n" href="http://sevenhao.github.io/qhao/web/sevenhao.html">七点的沐兮</a>
+		</span>
+	</span>
+	<span class="posted-on">
+		<span class="screen-reader-text">发布于 </span>
+		<a href="https://paran.io/css-float-attribute/" rel="bookmark">
+			<time class="entry-date published" datetime="2009-09-10T16:54:30+00:00">2016/07/08</time>
+			<time class="updated" datetime="2009-09-11T23:57:02+00:00">2016/07/08</time>
+		</a>
+	</span>
+	<!--<span class="cat-links">-->
+		<!--<span class="screen-reader-text">分类 </span>-->
+		<!--<a href="" rel="category tag">CSS</a>、-->
+		<!--<a href="" rel="category tag">设计开发</a>-->
+	<!--</span>-->
+	<span class="tags-links">
+		<span class="screen-reader-text">标签 </span>
+		<a href="../../menu/sevenhaocss.html" rel="tag">CSS</a>
+		<!--<a href="#" rel="tag">CSS属性</a>-->
+		<!--<a href="#" rel="tag">rotate</a>-->
+	</span>
+</div><!-- .entry-footer -->
+</article><!-- #post-## -->
+</main><!-- .site-main -->
+
+</div><!-- .content-area -->
+</div><!-- .site-content -->
+<div id="colophon" class="footer site-footer" role="contentinfo">
+	<div class="site-info">
+		<span class="site-title">
+			<a href="http://sevenhao.github.io/qhao/web/sevenhao.html" rel="home">七点的沐兮</a>
+		</span>
+		<a>前端开发攻城狮</a>
+	</div><!-- .site-info -->
+</div><!-- .site-footer -->
+</div><!-- .site-inner -->
+</div><!-- .site -->
+
+</body>
+</html>

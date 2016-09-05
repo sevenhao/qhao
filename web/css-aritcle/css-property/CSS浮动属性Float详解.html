@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://paran.io/css-float-attribute/ -->
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS浮动属性Float详解</title>
+	<link rel="stylesheet" id="twentysixteen-style-css" href="./css/CSS浮动属性Float详解/style.css?ver=20160628" type="text/css" media="all">
+	<!--[if lt IE 10]>
+	<link rel='stylesheet' id='twentysixteen-ie-css'  href='./css/CSS浮动属性Float详解/ie.css?ver=20160628' type='text/css' media='all' />
+	<![endif]-->
+	<!--[if lt IE 9]>
+	<link rel='stylesheet' id='twentysixteen-ie8-css'  href='./css/CSS浮动属性Float详解/ie8.css?ver=20160628' type='text/css' media='all' />
+	<![endif]-->
+	<!--[if lt IE 8]>
+	<link rel='stylesheet' id='twentysixteen-ie7-css'  href='./css/CSS浮动属性Float详解/ie7.css?ver=20160628' type='text/css' media='all' />
+	<![endif]-->
+	<!--[if lt IE 9]>
+	<script type='text/javascript' src='./js/CSS浮动属性Float详解/html5.js?ver=3.7.3'></script>
+	<![endif]-->
+
+</head>
+<body class="single single-post postid-11034 single-format-standard group-blog no-sidebar">
+<div id="page" class="site">
+	<div class="site-inner">
+		<div id="masthead" class="header site-header" role="banner">
+			<div class="site-header-main">
+				<div class="site-branding">
+					<p class="site-title">
+						<a href="http://sevenhao.github.io/qhao/">七点的沐兮</a>
+					</p>
+					<p class="site-description">The world is his who enjoys it.</p>
+				</div>
+				<!-- .site-branding -->
+			</div>
+			<!-- .site-header-main -->
+		</div>
+		<!-- .site-header -->
+
+		<div id="content" class="site-content">
+			<div id="primary" class="content-area">
+				<main id="main" class="site-main" role="main">
+					<article id="post-11034" class="post-11034 post type-post status-publish format-standard hentry category-css category-dede tag-css tag-css-attribute tag-float">
+						<div class="header entry-header">
+							<h1 class="entry-title">CSS浮动属性Float详解</h1>
+						</div><!-- .entry-header -->
+						<div class="entry-content">
+							<h2>什么是CSS Float？</h2>
+							<p><strong>float 是 css 的定位属性</strong>。在传统的印刷布局中，文本可以按照需要围绕图片。一般把这种方式称为“文本环绕”。在网页设计中，应用了CSS的float属性的页面元素就像在印刷布局里面的被文字包围的图片一样。浮动的元素仍然是网页流的一部分。这与使用绝对 定位的页面元素相比是一个明显的不同。绝对定位的页面元素被从网页流里面移除了，就像印刷布局里面的文本框被设置为无视页面环绕一样。绝对定位的元素不会 影响其它元素，其它元素也不会影响它，无论它是否和其它元素挨着。
+							</p>
+							<p>像这样在一个元素上用CSS设置浮动：</p>
+							<pre>
+								<code class="css">#sidebar { float: right; }</code>
+							</pre>
+							<p>fload属性有四个可用的值：Left 和Right 分别浮动元素到各自的方向，None (默认的) 使元素不浮动，Inherit 将会从父级元素获取float值。
+							</p>
+							<h2>Float的用处</h2>
+							<p>除了简单的在图片周围包围文字，浮动可用于创建全部网页布局。</p>
+							<p>
+								<img class="aligncenter" src="./img/CSS浮动属性Float详解/web-layout.png" alt="web-layout">
+							</p>
+							<p>Float对小型的布局同样有用。例如页面中的这个小区域。如果我们在我们的小头像图片上使用Float，当调整图片大小的时候，盒子里面的文字也将自动调整位置：
+							</p>
+							<p>
+								<img class="aligncenter" src="./img/CSS浮动属性Float详解/reflow-example-1.png" alt="reflow-example">
+							</p>
+							<p>同样的布局可以通过在外容器使用相对定位，然后在头像上使用绝对定位来实现。这种方式中，文本不会受头像图片大小的影响，不会随头像图片的大小而有相应变化。
+							</p>
+							<p>
+								<img class="aligncenter" src="./img/CSS浮动属性Float详解/reflow-example-2.png" alt="reflow-example">
+							</p>
+							<h2>清除Float</h2>
+							<p>清除(clear)是浮动(float)的相关属性.一个设置了清除Float的元素不会如浮动所设置的一样，向上移动到Float元素的边界，而是会忽视浮动向下移动。如下，一图顶千言。
+								<span id="more-11034"></span>
+							</p>
+							<p>
+								<img class="aligncenter" src="./img/CSS浮动属性Float详解/unclearedfooter.png" alt="uncleardfooter">
+							</p>
+							<p>上例中，侧栏向右浮动，并且短于主内容区域。页脚(footer)于是按浮动所要求的向上跳到了可能的空间。要解决这个问题，可以在页脚(footer)上清除浮动，以使页脚(footer)待在浮动元素的下面。
+							</p>
+							<pre>
+								<code class="css">#footer { clear: both; }</code>
+							</pre>
+
+							<p>
+								<img class="aligncenter" src="./img/CSS浮动属性Float详解/clearedfooter.png" alt="cleardfooter">
+							</p>
+							<p>清除(clear)也有4个可能值。最常用的是 both，清楚左右两边的浮动。left 和 right 只能清楚一个方向的浮动。none 是默认值，只在需要移除已指定的清除值时用到。inherit 应该时第五个值，不过很奇怪的是 IE 不支持(这个不奇怪吧，IE 从来都这么特立独行吧 －糖伴西红柿注)。只清除左边或右边的浮动，实际中很少见，不过绝对有他们的用处。
+							</p>
+							<p>
+								<img class="aligncenter" src="./img/CSS浮动属性Float详解/directionalclearing.png" alt="directionalclearing">
+							</p>
+							<h2>伟大的塌陷</h2>
+							<p>使用浮动(float)的一个比较疑惑的事情是他们怎么影响包含他们的父元素的。如果父元素只包含浮动元素，那么它的高度就会塌缩为零。如果父元素不包含任何的可见背景，这个问题会很难被注意到，但是这是一个很重要的问题。</p>
+							<p>
+								<img class="aligncenter" src="./img/CSS浮动属性Float详解/collapse.png" alt="collapse">
+							</p>
+							<p>塌陷的直观对立面更不好，看看下面的情况：</p>
+							<p><img class="aligncenter" src="./img/CSS浮动属性Float详解/whywecollapse.png" alt="whywecollapse"></p>
+<p>当上面的块级元素自动扩展以适应浮动元素时，段落间的文本流中会出现非自然的空白换行，而且没有有效的方法来修正这个问题。对于这种情况，设计师的抱怨会更甚于对塌陷的抱怨（没理解，不是设计完成之后才会进行页面编码吗？－ 糖伴西红柿）。</p>
+<p>为了防止怪异的布局和跨浏览器的问题，塌陷问题几乎总是被要处理的。我们在容器中的浮动元素之后，容器结束之前来清除浮动。</p>
+<h2>清除浮动的技术</h2>
+<p>如果你很明确的知道接下来的元素会是什么，可以使用 clear:both; 来清除浮动。这个方法很不错，它不需要 hack，不添加额外的元素也使得它有良好的语义性。当然事情并不是都可以这样解决的，工具箱中还是需要另外几个清除浮动的工具。</p>
+<ul>
+	<li>
+		<strong>空div方法</strong>从字面来看，是一个空的 div。<br>
+。有时可能会用<br>
+或者一些其他元素，但是 div 是最常用的，因为它没有浏览器默认样式；没有特殊功能，而且一般不会被 css 样式化。这个方法因为只是为了表现，对页面没有上下文涵义而被纯语义论者嘲笑。诚然，从严格的角度来说他们是对的，但是这个方法有效而且没有任何伤害。
+	</li>
+	<li>
+		<strong>overflow 方法</strong>在父元素上设置 overflow 这个 css 属性。如果父元素的这个属性设置为 auto 或者 hidden，父元素就会扩展以包含浮动。这个方法有着较好的语义性，因为他不需要额外元素。但是，如果需要增加一个新的 div 来使用这个方法，其实就和空 div 方法一样没有语义了。而且要记住，overflow 属性不是为了清除浮动而定义的。要小心不要覆盖住内容或者触发了不需要的滚动条。
+	</li>
+	<li><strong>简单清除方法</strong>使用了一个聪明的 css 伪选择符(:after)来清除浮动。比起在父元素上设置 overflow，只需要给它增加一个额外的类似于”clearfix”的类。这个类使用如下 css:
+		<pre><code class="css">			.clearfix:after {
+   				content: ".";
+   				visibility: hidden;
+   				display: block;
+   				height: 0;
+   				clear: both;
+			}</code></pre>
+		<p>这会在清除浮动的父元素之后应用一点看不见的内容。这不是<a href="http://www.positioniseverything.net/easyclearing.html">全部内容</a>，还需要一些额外的代码来适应那些老旧的浏览器
+		</p>
+	</li>
+</ul>
+<p>不同的情况需要不同的浮动清除方法。以一个具有不同样式块的网格为例。</p>
+<p>
+	<img class="aligncenter" src="./img/CSS浮动属性Float详解/grid-blocks.png" alt="">
+</p>
+<p>为了从视觉上较好的把相似的块联系起来，需要在必要的地方开启新行，这里是颜色改变的地方。如果每个颜色组都有一个父元素的话，我们可以使用 overflow 或者 简单清除方法。或者，在每组之间用一个空div方法。额外的 div 之前并不存在，可以自己试试来看看哪个方法好。</p>
+<p>
+	<img class="aligncenter" src="./img/CSS浮动属性Float详解/grid-blocks-cleared.png" alt="">
+</p>
+<h2>浮动的问题</h2>
+<p>浮动因脆弱而饱受诟病。大多数的脆弱性来自于 IE6 及其一系列的浮动相关 bug。因为越来越多的设计师不再支持 IE6 了，你也可以不关注它了。不过对于那些要关注的人来说，这里有些大概。
+</p>
+<ul>
+	<li><strong>推倒</strong>是浮动元素内的元素（大多是图片）比浮动元素本身宽造成的现象。大多数的浏览器会在浮动之外渲染图片，但是不会有伸出来的部分影响其他布局。IE 会扩展浮动来包含图片，精彩大幅度地影响布局。一个普遍的例子是突破伸出主内容之外把侧栏推到下面。
+		<img class="aligncenter" src="./img/CSS浮动属性Float详解/pushdown2.png" alt="">
+	</li>
+	<li>
+		<strong>快速修正</strong>：确保不是图片造成这种情况，使用 overflow:hidden 来切除多余的部分。
+	</li>
+	<li>
+		<strong>双倍边距bug</strong>处理 IE6 时，另一个需要记住的事情是，如果在和浮动方向相同的方向上设置外边距(margin)，会引发<a href="http://www.cssnewbie.com/double-margin-float-bug/">双倍边距</a>。快速修正：给浮动设置 display:inline; 而且不用担心，它依然是块级元素。
+	</li>
+	<li>
+		<strong>3像素间距</strong>是指挨着浮动元素的文本会神奇的被踢出去3像素，好像浮动元素的周围有一个奇怪的力场一样。快速修正：在受影响的文本上设置宽度或高度。
+	</li>
+	<li>IE7 中，<strong>底边距 bug</strong>是当浮动父元素有浮动子元素时，这些子元素的底边距会被父元素忽略掉。快速修正：用父元素的底内补白(padding)代替。
+	</li>
+</ul>
+<p>转载：
+	<a href="https://paran.io/css-float-attribute/">CSS浮动详解</a><br>
+</p>
+<p>清除浮动示例：
+	<a href="http://sevenhao.github.io/case/case-about-css/float/clearfloat.html#distinguish">demo</a><br>
+</p>
+</div><!-- .entry-content -->
+
+<div class="footer entry-footer">
+	<span class="byline">
+		<span class="author vcard">
+			<img alt="" src="http://sevenhao.github.io/qhao/images/cv/qhao.jpg" class="avatar avatar-49 photo" height="49" width="49">
+			<span class="screen-reader-text">作者 </span>
+			<a class="url fn n" href="http://sevenhao.github.io/qhao/web/sevenhao.html">七点的沐兮</a>
+		</span>
+	</span>
+	<span class="posted-on">
+		<span class="screen-reader-text">发布于 </span>
+		<a href="https://paran.io/css-float-attribute/" rel="bookmark">
+			<time class="entry-date published" datetime="2009-09-10T16:54:30+00:00">2016/06/28</time>
+			<time class="updated" datetime="2009-09-11T23:57:02+00:00">2016/06/28</time>
+		</a>
+	</span>
+	<span class="cat-links">
+		<span class="screen-reader-text">分类 </span>
+		<a href="" rel="category tag">CSS</a>、
+		<a href="" rel="category tag">设计开发</a>
+	</span>
+	<span class="tags-links">
+		<span class="screen-reader-text">标签 </span>
+		<a href="#" rel="tag">CSS</a>、
+		<a href="#" rel="tag">CSS属性</a>、
+		<a href="#" rel="tag">float</a>
+	</span>
+</div><!-- .entry-footer -->
+</article><!-- #post-## -->
+</main><!-- .site-main -->
+
+</div><!-- .content-area -->
+</div><!-- .site-content -->
+<div id="colophon" class="footer site-footer" role="contentinfo">
+	<div class="site-info">
+		<span class="site-title">
+			<a href="http://sevenhao.github.io/qhao/web/sevenhao.html" rel="home">七点的沐兮</a>
+		</span>
+		<a>前端开发攻城狮</a>
+	</div><!-- .site-info -->
+</div><!-- .site-footer -->
+</div><!-- .site-inner -->
+</div><!-- .site -->
+
+</body>
+</html>
